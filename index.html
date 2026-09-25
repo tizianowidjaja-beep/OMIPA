@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMIPA VI — Pusat Belajar Olimpiade Sains (IPA) Kelas 6 Tingkat Provinsi</title>
+<meta name="description" content="Materi lengkap & kuis interaktif Olimpiade Sains (IPA) Kelas VI tingkat provinsi sesuai kisi-kisi: sistem ekskresi, perkembangbiakan & genetika, listrik & magnet, tekanan & pesawat sederhana, gerak lurus, serta astronomi (rotasi, revolusi, gerhana, kalender).">
+<style>
+  :root{
+    --ungu:#7c3aed; --biru:#0ea5e9; --pink:#ec4899; --hijau:#10b981;
+    --oranye:#f59e0b; --merah:#ef4444; --gelap:#101331; --terang:#f4f7ff;
+    --grad:linear-gradient(135deg,#00c2ff 0%,#7a5cff 45%,#ff5ca8 100%);
+    --grad2:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
+  html{scroll-behavior:smooth}
+  body{background:var(--terang);color:var(--gelap);line-height:1.65}
+  section{scroll-margin-top:76px}
+
+  /* ===== NAVBAR GLASS ===== */
+  nav{position:sticky;top:0;z-index:999;background:rgba(16,19,49,.82);backdrop-filter:blur(12px);
+      box-shadow:0 2px 18px rgba(0,0,0,.35);display:flex;flex-wrap:wrap;gap:6px;
+      align-items:center;justify-content:center;padding:10px 14px}
+  nav .logo{font-weight:900;font-size:1.15rem;background:var(--grad);-webkit-background-clip:text;
+      background-clip:text;color:transparent;margin-right:10px;white-space:nowrap;letter-spacing:.5px}
+  nav a{text-decoration:none;color:#e8ecff;font-size:.85rem;font-weight:600;
+      padding:6px 13px;border-radius:999px;transition:.25s;border:1px solid transparent}
+  nav a:hover{background:var(--grad);color:#fff;transform:translateY(-2px);box-shadow:0 6px 14px rgba(122,92,255,.4)}
+
+  /* ===== HERO LUAR ANGKASA ===== */
+  header{background:radial-gradient(ellipse at 20% 10%,#2b1e66 0%,transparent 55%),
+         radial-gradient(ellipse at 85% 90%,#083b66 0%,transparent 55%),
+         linear-gradient(160deg,#0b0e2a 0%,#141a4a 55%,#1b1035 100%);
+      color:#fff;text-align:center;padding:80px 20px 100px;position:relative;overflow:hidden}
+  .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 3s infinite;pointer-events:none}
+  @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+  .orb{position:absolute;font-size:2.3rem;opacity:.55;animation:floaty 7s ease-in-out infinite;pointer-events:none;filter:drop-shadow(0 0 12px rgba(255,255,255,.35))}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-20px) rotate(8deg)}}
+  .ring{position:absolute;border:2px dashed rgba(255,255,255,.16);border-radius:50%;pointer-events:none;animation:spin 40s linear infinite}
+  .ring.r1{width:520px;height:520px;top:-160px;left:-160px}
+  .ring.r2{width:640px;height:640px;bottom:-260px;right:-200px;animation-duration:60s;animation-direction:reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  header h1{font-size:clamp(1.8rem,5vw,3.1rem);font-weight:900;line-height:1.2;
+      background:linear-gradient(90deg,#7ef0ff,#c4b5fd,#ffb3d9);-webkit-background-clip:text;background-clip:text;color:transparent;
+      filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
+  header p{max-width:780px;margin:16px auto 0;font-size:1.05rem;opacity:.92}
+  .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);
+      padding:6px 18px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:16px;backdrop-filter:blur(6px)}
+  .stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:8px 16px;font-size:.85rem;font-weight:700;backdrop-filter:blur(6px)}
+  .hero-btns{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{cursor:pointer;border:none;border-radius:14px;padding:12px 26px;font-size:1rem;font-weight:800;
+      background:#fff;color:var(--ungu);box-shadow:0 6px 18px rgba(0,0,0,.35);transition:.25s}
+  .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 26px rgba(0,0,0,.45)}
+  .btn.grad{background:var(--grad);color:#fff}
+  .btn.small{padding:9px 18px;font-size:.9rem}
+
+  main{max-width:1020px;margin:-50px auto 0;padding:0 16px 60px;position:relative;z-index:2}
+
+  /* ===== KARTU ===== */
+  .card{background:#fff;border-radius:22px;padding:24px;margin:16px 0;
+      box-shadow:0 10px 30px rgba(28,25,90,.10);border-left:6px solid var(--ungu);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;right:0;width:120px;height:120px;border-radius:50%;
+      background:var(--grad);opacity:.06;transform:translate(30%,-30%)}
+  .card h3{margin-bottom:10px;color:var(--ungu);font-size:1.12rem}
+  .card.konsep{border-left-color:var(--biru)} .card.konsep h3{color:var(--biru)}
+  .card.contoh{border-left-color:var(--hijau)} .card.contoh h3{color:var(--hijau)}
+  .card.jebakan{border-left-color:var(--merah)} .card.jebakan h3{color:var(--merah)}
+  .card.trik{border-left-color:var(--oranye)} .card.trik h3{color:#b45309}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  @media(max-width:720px){.grid-2{grid-template-columns:1fr}}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  .bab-head{display:flex;align-items:center;gap:14px;margin:46px 0 6px}
+  .bab-num{background:var(--grad);color:#fff;font-weight:900;padding:9px 18px;border-radius:14px;
+      box-shadow:0 6px 16px rgba(122,92,255,.4);white-space:nowrap;letter-spacing:1px}
+  .bab-head h2{font-size:clamp(1.2rem,3.5vw,1.6rem)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .chip{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;border-radius:999px;padding:6px 14px;font-size:.86rem;font-weight:700}
+  .chip.hijau{background:#ecfdf5;border-color:#a7f3d0;color:#065f46}
+  .chip.merah{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .chip.oranye{background:#fffbeb;border-color:#fde68a;color:#92400e}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+  th,td{border:1px solid #e2e8f0;padding:9px 12px;text-align:center}
+  th{background:var(--grad);color:#fff}
+  tr:nth-child(even) td{background:#f5f7ff}
+  .table-wrap{overflow-x:auto}
+
+  .rumus{background:#eef0ff;border:2px dashed var(--ungu);border-radius:14px;
+      padding:12px 16px;font-weight:800;text-align:center;margin:12px 0;font-size:1.02rem}
+  .langkah{background:#f0fff9;border:1px solid #bbf7d0;border-radius:12px;padding:14px 18px;margin:10px 0;font-family:Consolas,monospace;font-size:.98rem}
+  .langkah b{color:var(--hijau)}
+
+  /* ===== KUIS ===== */
+  #kuis{margin-top:50px}
+  .picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:18px 0}
+  .pick{cursor:pointer;border:none;border-radius:18px;padding:18px 12px;color:#fff;font-weight:800;
+      font-size:.95rem;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:.25s;text-align:center}
+  .pick:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 24px rgba(0,0,0,.28)}
+  .pick small{display:block;font-weight:500;opacity:.92;margin-top:4px}
+  .p1{background:linear-gradient(135deg,#7c3aed,#a78bfa)} .p2{background:linear-gradient(135deg,#0ea5e9,#7dd3fc)}
+  .p3{background:linear-gradient(135deg,#10b981,#6ee7b7);color:#04472f} .p4{background:linear-gradient(135deg,#f59e0b,#fcd34d);color:#5c3a00}
+  .p5{background:linear-gradient(135deg,#ec4899,#f9a8d4)} .p6{background:linear-gradient(135deg,#f7971e,#ffd200);color:#5c3a00}
+
+  #quizArea{background:#fff;border-radius:20px;padding:26px;box-shadow:0 10px 30px rgba(14,165,233,.12);min-height:220px;border:1px solid #e2e8f0}
+  .quiz-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-weight:700;font-size:.9rem;color:#475569}
+  .timer{background:var(--gelap);color:#7ef0ff;border-radius:999px;padding:2px 12px;font-variant-numeric:tabular-nums}
+  .pbar{height:10px;background:#e6e9f5;border-radius:99px;margin:10px 0 18px;overflow:hidden}
+  .pfill{height:100%;background:var(--grad);border-radius:99px;transition:width .4s}
+  .qtext{font-size:1.12rem;margin-bottom:16px}
+  .opt{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 16px;font-size:1rem;
+      border:2px solid #e2e8f0;border-radius:14px;background:#fbfcff;cursor:pointer;transition:.2s;font-weight:600}
+  .opt:hover:not(:disabled){border-color:var(--ungu);background:#f3efff;transform:translateX(6px)}
+  .opt:disabled{cursor:not-allowed;opacity:.85}
+  .opt.correct{background:#e8fff4;border-color:var(--hijau);color:#04472f;opacity:1}
+  .opt.wrong{background:#ffecec;border-color:var(--merah);color:#7a1c1c;opacity:1}
+  .expl{margin:14px 0;padding:14px 16px;border-radius:14px;font-size:.95rem;animation:masuk .4s both}
+  .expl.good{background:#e8fff4;border:1px solid var(--hijau)}
+  .expl.bad{background:#ffecec;border:1px solid var(--merah)}
+  @keyframes masuk{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hasil{text-align:center;animation:masuk .5s both}
+  .hasil .skor{font-size:3.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .review{text-align:left;margin:18px auto 0;max-width:660px;font-size:.9rem}
+  .review li{margin:6px 0 6px 18px}
+
+  .tips-list li{margin:8px 0 8px 20px}
+  footer{background:var(--gelap);color:#dfe6e9;text-align:center;padding:28px 16px;font-size:.9rem}
+  footer b{color:#7ef0ff}
+
+  .confetti{position:fixed;top:-30px;font-size:1.5rem;z-index:9999;animation:jatuh linear forwards;pointer-events:none}
+  @keyframes jatuh{to{transform:translateY(110vh) rotate(720deg);opacity:.9}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🔬 OMIPA VI</span>
+  <a href="#kisi">Kisi-Kisi</a>
+  <a href="#bab1">Bab 1</a>
+  <a href="#bab2">Bab 2</a>
+  <a href="#bab3">Bab 3</a>
+  <a href="#bab4">Bab 4</a>
+  <a href="#bab5">Bab 5</a>
+  <a href="#kuis">Arena Kuis</a>
+  <a href="#tips">Tips Provinsi</a>
+</nav>
+
+<header id="starsBox">
+  <div class="ring r1"></div><div class="ring r2"></div>
+  <span class="badge">🚀 PERSIAPAN OLIMPIADE SAINS (IPA) — TINGKAT PROVINSI</span>
+  <h1>OMIPA VI<br>Pusat Belajar Olimpiade Sains Kelas 6</h1>
+  <p>Halo, calon ilmuwan juara! 🧑‍🔬 Taklukkan <b>3 medan sains</b> — 🧬 Biologi, ⚡ Fisika, dan 🌍 Bumi & Antariksa —
+     sesuai kisi-kisi resmi provinsi: materi seru, contoh soal bertingkat, jebakan mematikan, trik juara,
+     plus <b>kuis interaktif ber-timer</b> & try out ala OSN. Siap meluncur? 🛸</p>
+  <div class="stats">
+    <span class="stat">📚 5 Bab Materi</span>
+    <span class="stat">🧠 35 Soal Latihan</span>
+    <span class="stat">⏱️ Mode Ujian Ber-timer</span>
+    <span class="stat">🏆 Try Out Provinsi</span>
+  </div>
+  <div class="hero-btns">
+    <button class="btn" onclick="location.href='#bab1'">🧪 Mulai Jelajah</button>
+    <button class="btn grad" onclick="location.href='#kuis'">📝 Langsung Kuis!</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= KISI-KISI ================= -->
+<section id="kisi">
+  <div class="card reveal">
+    <h3>🗺️ Peta Kisi-Kisi Olimpiade Sains (IPA) Kelas VI — Level Provinsi</h3>
+    <p>Berdasarkan kisi-kisi resmi yang kamu pegang, inilah 3 medan perang yang harus ditaklukkan:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Medan</th><th>Cakupan Soal Provinsi</th></tr>
+        <tr><td><b>🧬 Biologi</b><br>(Genetika, Ekskresi, & Kesehatan)</td>
+            <td style="text-align:left">• Sistem ekskresi manusia (ginjal, kulit, hati, paru-paru) & sistem saraf/otot dasar.<br>
+                • Perkembangbiakan makhluk hidup (generatif & vegetatif pada tumbuhan; generatif pada hewan: vivipar, ovipar, ovovivipar).<br>
+                • Pewarisan sifat sederhana (konsep dominan/resesif dalam persilangan).<br>
+                • Mikrobiologi sederhana (peran bakteri & jamur dalam pembuatan makanan atau pembusukan).<br>
+                • Kelainan dan penyakit pada sistem organ manusia.</td></tr>
+        <tr><td><b>⚡ Fisika</b><br>(Listrik, Tekanan, & Mekanika)</td>
+            <td style="text-align:left">• Rangkaian listrik sederhana (seri, paralel, campuran) & hukum dasar kelistrikan (menghitung kuat arus/tegangan level OSN).<br>
+                • Medan magnet & cara membuat magnet (induksi, gosok, elektromagnetik).<br>
+                • Tekanan zat padat, cair (hukum Archimedes, tekanan hidrostatis), dan gas.<br>
+                • Pesawat sederhana (katrol, bidang miring, tuas/pengungkit, roda berporos) & keuntungan mekanis.<br>
+                • Gerak lurus (kecepatan, jarak, waktu) & gaya berat.</td></tr>
+        <tr><td><b>🌍 Bumi & Antariksa</b><br>(Astronomi Lanjutan)</td>
+            <td style="text-align:left">• Pergerakan Bumi (rotasi & revolusi) beserta dampaknya (pergantian musim, pembagian waktu).<br>
+                • Pergerakan Bulan (rotasi & revolusi) serta fase-fase bulan.<br>
+                • Gerhana (Matahari total/sebagian/cincin & Bulan total/sebagian).<br>
+                • Kalender Masehi dan Hijriah berdasarkan peredaran Bumi dan Bulan.</td></tr>
+      </table>
+    </div>
+    <p>💡 <i>Catatan kisi-kisi: masing-masing jenjang juga ada soal <b>pengetahuan umum</b> — jadi tetap rajin membaca ya! (Ada bocorannya di Try Out 😉)</i></p>
+  </div>
+</section>
+
+<!-- ================= BAB 1 ================= -->
+<section id="bab1">
+  <div class="bab-head reveal"><span class="bab-num">BAB 1</span><h2>🫀 Sistem Tubuh Manusia: Ekskresi, Saraf, Otot & Penyakit</h2></div>
+
+  <div class="card reveal">
+    <h3>🎯 Tujuan Belajar</h3>
+    <p>Kamu akan menguasai "pabrik pembuangan" tubuh (ekskresi), pusat kendali (saraf), mesin gerak (otot), serta penyakit yang sering muncul di soal provinsi. Ini fondasi Biologi olimpiade!</p>
+  </div>
+
+  <div class="card konsep reveal">
+    <h3>💡 Konsep Seru: "Empat Cerobong Asap Tubuh"</h3>
+    <p><b>Ekskresi</b> = pengeluaran <b>sisa metabolisme</b> (zat yang tidak dipakai lagi oleh tubuh). Empat organnya:</p>
+    <div class="chips">
+      <span class="chip">🫘 Ginjal → urine (urea, air, zat sisa)</span>
+      <span class="chip">💧 Kulit → keringat (air & garam)</span>
+      <span class="chip">🫁 Paru-paru → CO₂ & uap air</span>
+      <span class="chip">🧪 Hati → empedu & urea, penawar racun</span>
+    </div>
+    <p><b>Sistem saraf:</b> unit terkecilnya <b>neuron</b>. Aluran impuls: <b>dendrit → badan sel → akson (axon) → neuron berikutnya</b>. Pusat: otak & sumsum tulang belakang.</p>
+    <p><b>Tiga jenis otot:</b></p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Otot</th><th>Letak</th><th>Kerja</th></tr>
+        <tr><td>Lurik / rangka</td><td>melekat di tulang</td><td>sadar (volunter)</td></tr>
+        <tr><td>Polos</td><td>organ dalam (lambung, usus)</td><td>tidak sadar</td></tr>
+        <tr><td>Jantung</td><td>jantung</td><td>tidak sadar, tak pernah istirahat 💪</td></tr>
+      </table>
+    </div>
+    <div class="rumus">Ekskresi = buang SISA METABOLISME • Defekasi (BAB) BUKAN ekskresi!</div>
+  </div>
+
+  <div class="card contoh reveal">
+    <h3>✍️ Contoh Soal & Pembahasan</h3>
+    <p><b>Soal:</b> Mengapa paru-paru tergolong organ ekskresi, padahal tugas utamanya untuk bernapas?</p>
+    <div class="langkah">
+      Langkah 1: Ekskresi = membuang sisa metabolisme.<br>
+      Langkah 2: Respirasi sel menghasilkan sisa berupa <b>CO₂ dan uap air</b>.<br>
+      Langkah 3: Paru-paru membuang keduanya saat menghembuskan napas → jadi paru-paru = <b>organ ekskresi</b> ✅
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <h3>🏥 Kelainan & Penyakit yang Wajib Dihafal</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Organ</th><th>Penyakit / Kelainan</th></tr>
+        <tr><td>Ginjal</td><td>batu ginjal, nefritis (radang), diabetes melitus (glukosa dalam urine)</td></tr>
+        <tr><td>Kulit</td><td>kudis/scabies, panu & kurap (jamur), jerawat</td></tr>
+        <tr><td>Hati</td><td>hepatitis (radang), penyakit kuning, sirosis</td></tr>
+        <tr><td>Paru-paru</td><td>asma, TBC, bronkitis</td></tr>
+        <tr><td>Saraf</td><td>stroke, epilepsi, polio</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card jebakan reveal">
+      <h3>⚠️ Jebakan Batman</h3>
+      <p>Soal sering bertanya "yang <b>bukan</b> organ ekskresi". Ingat: <b>anus/usus besar bukan organ ekskresi</b> (BAB = defekasi, membuang sisa pencernaan, bukan sisa metabolisme). Hati-hati juga: hati mengekskresikan <b>empedu</b>, bukan urine!</p>
+    </div>
+    <div class="card trik reveal">
+      <h3>🚀 Trik Juara</h3>
+      <p>Jembatan keledai: <b>"Gi-Kul-Pa-Ha"</b> → Ginjal=urine, Kulit=keringat, Paru=CO₂, Hati=empedu. Saat ujian, coret dulu pilihan yang merupakan alat pencernaan — sisa pilihan tinggal diadu!</p>
+    </div>
+  </div>
+  <button class="btn grad" onclick="startQuiz('bab1')">📝 Taklukkan Kuis Bab 1!</button>
+</section>
+
+<!-- ================= BAB 2 ================= -->
+<section id="bab2">
+  <div class="bab-head reveal"><span class="bab-num">BAB 2</span><h2>🧬 Perkembangbiakan, Pewarisan Sifat & Mikrobiologi</h2></div>
+
+  <div class="card reveal">
+    <h3>🎯 Tujuan Belajar</h3>
+    <p>Kamu akan jago membedakan vegetatif vs generatif, hafal contoh vivipar-ovipar-ovovivipar, membaca persilangan dominan/resesif, serta mengenal bakteri & jamur sahabat (dan musuh) manusia!</p>
+  </div>
+
+  <div class="card konsep reveal">
+    <h3>💡 Konsep Seru: "Pabrik Kehidupan"</h3>
+    <p><b>Vegetatif alami tumbuhan:</b> rhizoma (jahe, kunyit), umbi batang (kentang), umbi akar (wortel, singkong), umbi lapis (bawang), geragih/stolon (stroberi, rumput), tunas adventif (cocor bebek), spora (paku, lumut).</p>
+    <p><b>Vegetatif buatan:</b> cangkok, stek, merunduk, menyambung (enten), menempel (okulasi), kultur jaringan.</p>
+    <p><b>Generatif hewan:</b> 🐄 <b>Vivipar</b> = melahirkan (mamalia: kucing, sapi); 🐔 <b>Ovipar</b> = bertelur (ayam, ikan, burung); 🐍 <b>Ovovivipar</b> = bertelur-melahirkan (boa, hiu, cucut).</p>
+    <p><b>Pewarisan sifat:</b> gen <b>dominan</b> (huruf besar, M) mengalahkan gen <b>resesif</b> (huruf kecil, m). <b>Genotipe</b> = susunan gen (Mm); <b>Fenotipe</b> = sifat yang tampak (merah).</p>
+    <div class="rumus">P: MM × mm → F1: 100% Mm (dominan) → F2: fenotipe 3 : 1</div>
+    <p><b>Mikrobiologi:</b> jamur <i>Rhizopus oligosporus</i> (tempe), <i>Saccharomyces cerevisiae</i> (roti, tape), bakteri <i>Lactobacillus</i> (yogurt, keju), <i>Acetobacter xylinum</i> (nata de coco). Musuh: jamur & bakteri pembusuk makanan.</p>
+  </div>
+
+  <div class="card contoh reveal">
+    <h3>✍️ Contoh Soal & Pembahasan</h3>
+    <p><b>Soal:</b> Bunga merah (MM) disilangkan dengan putih (mm). F1 disilangkan sesama. Berapa rasio fenotipe F2?</p>
+    <div class="langkah">
+      Langkah 1: P = MM × mm → F1 semua <b>Mm (merah)</b>.<br>
+      Langkah 2: F1 × F1 = Mm × Mm → kotak Punnett: MM, Mm, Mm, mm.<br>
+      Langkah 3: Merah (MM, Mm, Mm) : Putih (mm) = <b>3 : 1</b> ✅
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card jebakan reveal">
+      <h3>⚠️ Jebakan Batman</h3>
+      <p>Tukar-menukar umbi: <b>kentang = umbi batang</b>, <b>singkong/wortel = umbi akar</b>! Dan ovovivipar bukan "ayam yang melahirkan" — contohnya <b>boa, hiu, platipus? bukan!</b> Platipus ovipar. Fokus: boa & hiu 🐍🦈.</p>
+    </div>
+    <div class="card trik reveal">
+      <h3>🚀 Trik Juara</h3>
+      <p>Ingat dominan = <b>"yang muncul di F1"</b>. Kalau soal menyebut rasio 3:1, pasti persilangan <b>Mm × Mm</b>. Untuk mikroba, hafalkan pasangan makanan-jasad: <b>Tempe=Rhizopus, Roti=Saccharomyces, Yogurt=Lactobacillus, Nata=Acetobacter</b>.</p>
+    </div>
+  </div>
+  <button class="btn grad" onclick="startQuiz('bab2')">📝 Taklukkan Kuis Bab 2!</button>
+</section>
+
+<!-- ================= BAB 3 ================= -->
+<section id="bab3">
+  <div class="bab-head reveal"><span class="bab-num">BAB 3</span><h2>⚡ Rangkaian Listrik & Magnet</h2></div>
+
+  <div class="card reveal">
+    <h3>🎯 Tujuan Belajar</h3>
+    <p>Kamu akan mampu menganalisis rangkaian seri-paralel-campuran, menghitung kuat arus & tegangan ala OSN (Hukum Ohm), serta menguasai cara membuat magnet dan sifat medan magnet!</p>
+  </div>
+
+  <div class="card konsep reveal">
+    <h3>💡 Konsep Seru: "Jalan Raya Elektron"</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Sifat</th><th>Seri</th><th>Paralel</th></tr>
+        <tr><td>Jalur arus</td><td>satu jalan sempit</td><td>beberapa cabang</td></tr>
+        <tr><td>Nyala lampu</td><td>redup</td><td>terang</td></tr>
+        <tr><td>Jika 1 lampu putus</td><td>semua padam 💀</td><td>yang lain tetap menyala ✅</td></tr>
+        <tr><td>Tegangan</td><td>dibagi-bagi</td><td>sama penuh tiap cabang</td></tr>
+      </table>
+    </div>
+    <div class="rumus">Hukum Ohm: V = I × R &nbsp;→&nbsp; I = V ÷ R &nbsp;→&nbsp; R = V ÷ I<br><small>(V=volt, I=ampere, R=ohm) • Baterai seri: tegangan DIJUMLAHKAN</small></div>
+    <p><b>Membuat magnet:</b> 1️⃣ <b>Gosokan</b> (digosok searah pakai magnet), 2️⃣ <b>Induksi</b> (didekatkan/ditempel magnet), 3️⃣ <b>Elektromagnetik</b> (dililit kawat berarus listrik → magnet sementara, kekuatan naik jika lilitan/arus bertambah).</p>
+    <p><b>Kutub:</b> senama (N-N) <b>tolak-menolak</b>; tidak senama (N-S) <b>tarik-menarik</b>. Garis gaya magnet keluar dari kutub <b>Utara</b> menuju <b>Selatan</b>.</p>
+  </div>
+
+  <div class="card contoh reveal">
+    <h3>✍️ Contoh Soal & Pembahasan</h3>
+    <p><b>Soal:</b> 4 baterai @1,5 V dipasang seri menyala­kan lampu berhambatan 12 Ω. Kuat arus rangkaian?</p>
+    <div class="langkah">
+      Langkah 1: Baterai seri → V total = 4 × 1,5 = <b>6 volt</b>.<br>
+      Langkah 2: Hukum Ohm → I = V ÷ R = 6 ÷ 12.<br>
+      Langkah 3: I = <b>0,5 ampere</b> ✅
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card jebakan reveal">
+      <h3>⚠️ Jebakan Batman</h3>
+      <p>Baterai <b>paralel tegangannya TIDAK dijumlah</b> (tetap 1,5 V), yang seri baru dijumlah! Dan jangan tertukar: elektromagnetik = pakai <b>arus listrik</b>, induksi = pakai <b>magnet didekatkan</b> tanpa sentuhan gosokan.</p>
+    </div>
+    <div class="card trik reveal">
+      <h3>🚀 Trik Juara</h3>
+      <p>Segitiga ajaib Ohm: tutup huruf yang dicari! Tutup I → tersisa V di atas R → I = V/R. Untuk lampu: <b>paralel = terang & mandiri</b> (seperti lampu rumah), <b>seri = redup & setia kawan</b> (satu mati semua mati, seperti lampu hias lama).</p>
+    </div>
+  </div>
+  <button class="btn grad" onclick="startQuiz('bab3')">📝 Taklukkan Kuis Bab 3!</button>
+</section>
+
+<!-- ================= BAB 4 ================= -->
+<section id="bab4">
+  <div class="bab-head reveal"><span class="bab-num">BAB 4</span><h2>⚙️ Tekanan, Pesawat Sederhana & Gerak Lurus</h2></div>
+
+  <div class="card reveal">
+    <h3>🎯 Tujuan Belajar</h3>
+    <p>Kamu akan menguasai tekanan zat padat-cair-gas (Archimedes & hidrostatis), menghitung keuntungan mekanis katrol-tuas-bidang miring, serta soal kecepatan-jarak-waktu — favorit soal provinsi!</p>
+  </div>
+
+  <div class="card konsep reveal">
+    <h3>💡 Konsep Seru: "Mesin Pengangkat Raksasa"</h3>
+    <div class="rumus">Tekanan zat padat: P = F ÷ A &nbsp;|&nbsp; Hidrostatis: Ph = ρ × g × h (makin dalam makin besar!)</div>
+    <p><b>Archimedes:</b> benda <b>terapung</b> (massa jenis benda &lt; zat cair), <b>melayang</b> (=), <b>tenggelam</b> (&gt;). Kapal besi terapung karena bentuknya memperbesar volume air yang dipindahkan!</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Pesawat Sederhana</th><th>Keuntungan Mekanis (KM)</th></tr>
+        <tr><td>Tuas / pengungkit</td><td>KM = lengan kuasa ÷ lengan beban</td></tr>
+        <tr><td>Katrol tetap</td><td>KM = 1 (hanya mengubah arah gaya)</td></tr>
+        <tr><td>Katrol bebas</td><td>KM = 2</td></tr>
+        <tr><td>Bidang miring</td><td>KM = panjang bidang ÷ tinggi</td></tr>
+      </table>
+    </div>
+    <div class="rumus">Gerak lurus: v = s ÷ t &nbsp;|&nbsp; s = v × t &nbsp;|&nbsp; t = s ÷ v &nbsp;•&nbsp; 1 m/s = 3,6 km/h</div>
+    <p><b>Gaya berat:</b> semua benda jatuh ke bawah karena ditarik <b>gravitasi Bumi</b> — itulah gaya berat (W = m × g).</p>
+  </div>
+
+  <div class="card contoh reveal">
+    <h3>✍️ Contoh Soal & Pembahasan</h3>
+    <p><b>Soal:</b> Tuas mengangkat beban 200 N. Lengan beban 25 cm, lengan kuasa 100 cm. Berapa gaya kuasa & KM?</p>
+    <div class="langkah">
+      Langkah 1: F = W × (lengan beban ÷ lengan kuasa) = 200 × (25 ÷ 100) = <b>50 N</b>.<br>
+      Langkah 2: KM = W ÷ F = 200 ÷ 50 = <b>4</b> (cek: 100 ÷ 25 = 4 ✅).<br>
+      Artinya gaya terasa <b>4 kali lebih ringan</b>! 💪
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card jebakan reveal">
+      <h3>⚠️ Jebakan Batman</h3>
+      <p>KM bidang miring = <b>panjang ÷ tinggi</b>, jangan terbalik! Dan konversi kecepatan: km/jam → m/s itu <b>DIBAGI 3,6</b> (72 km/jam = 20 m/s), bukan dikali. Satu lagi: katrol tetap KM-nya <b>1</b> — tidak meringankan, hanya membelokkan gaya!</p>
+    </div>
+    <div class="card trik reveal">
+      <h3>🚀 Trik Juara</h3>
+      <p>Penyelam makin dalam makin "ditekan" → ingat <b>Ph bergantung kedalaman (h)</b>. Untuk soal cerita gerak: tulis dulu <b>diketahui → ditanya → rumus</b>, samakan satuan (jam→sekon, km→m) SEBELUM menghitung. Cek masuk akal: kecepatan sepeda ±5 m/s, mobil ±20 m/s.</p>
+    </div>
+  </div>
+  <button class="btn grad" onclick="startQuiz('bab4')">📝 Taklukkan Kuis Bab 4!</button>
+</section>
+
+<!-- ================= BAB 5 ================= -->
+<section id="bab5">
+  <div class="bab-head reveal"><span class="bab-num">BAB 5</span><h2>🌍 Bumi & Antariksa: Gerak, Gerhana & Kalender</h2></div>
+
+  <div class="card reveal">
+    <h3>🎯 Tujuan Belajar</h3>
+    <p>Kamu akan mampu menjelaskan akibat rotasi & revolusi Bumi, fase-fase Bulan, jenis-jenis gerhana, serta dasar kalender Masehi & Hijriah — materi astronomi lanjutan andalan soal provinsi!</p>
+  </div>
+
+  <div class="card konsep reveal">
+    <h3>💡 Konsep Seru: "Tari Kosmos"</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Gerak</th><th>Waktu</th><th>Akibat</th></tr>
+        <tr><td>Rotasi Bumi</td><td>24 jam (1 hari)</td><td>siang-malam, gerak semu harian, perbedaan waktu (24 zona × 15°)</td></tr>
+        <tr><td>Revolusi Bumi</td><td>365,25 hari (1 tahun)</td><td>pergantian musim, gerak semu tahunan, dasar kalender Masehi</td></tr>
+        <tr><td>Rotasi = Revolusi Bulan</td><td>±27,3 hari</td><td>wajah Bulan selalu sama dilihat dari Bumi</td></tr>
+        <tr><td>Revolusi Bulan (sinodis)</td><td>29,5 hari</td><td>fase Bulan & dasar kalender Hijriah</td></tr>
+      </table>
+    </div>
+    <p><b>Fase Bulan:</b> 🌑 baru → 🌒 sabit → 🌓 separuh → 🌔 benjol → 🌕 purnama → menyusut kembali.</p>
+    <div class="rumus">Gerhana MATAHARI: ☀️–🌙–🌍 (Bulan di tengah, fase bulan baru) • Gerhana BULAN: ☀️–🌍– (Bumi di tengah, fase purnama)</div>
+    <p><b>Jenis gerhana Matahari:</b> total, sebagian, <b>cincin</b> (Bulan di titik terjauh/apogee sehingga tampak kecil). <b>Gerhana Bulan:</b> total & sebagian (Bulan tampak kemerahan).</p>
+    <p><b>Kalender:</b> Masehi/Syamsiah = peredaran <b>Bumi mengelilingi Matahari</b> (365/366 hari, kabisat tiap 4 tahun). Hijriah/Komariah = peredaran <b>Bulan mengelilingi Bumi</b> (354/355 hari, selisih ±11 hari).</p>
+  </div>
+
+  <div class="card contoh reveal">
+    <h3>✍️ Contoh Soal & Pembahasan</h3>
+    <p><b>Soal:</b> Di Jakarta (WIB) pukul 10.00. Pukul berapa di Makassar (WITA) dan Jayapura (WIT)?</p>
+    <div class="langkah">
+      Langkah 1: WIB = UTC+7, WITA = UTC+8, WIT = UTC+9.<br>
+      Langkah 2: WITA = 10.00 + 1 jam = <b>11.00</b>.<br>
+      Langkah 3: WIT = 10.00 + 2 jam = <b>12.00</b> ✅ (akibat rotasi Bumi!)
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card jebakan reveal">
+      <h3>⚠️ Jebakan Batman</h3>
+      <p>Tertukar posisi! Gerhana <b>Matahari</b> = <b>Bulan</b> di tengah (bulan baru); gerhana <b>Bulan</b> = <b>Bumi</b> di tengah (purnama). Dan ingat: siang-malam = <b>rotasi</b>, musim = <b>revolusi</b> — jangan sampai terbalik di soal!</p>
+    </div>
+    <div class="card trik reveal">
+      <h3>🚀 Trik Juara</h3>
+      <p>Jembatan keledai: <b>"Ma-Bu-Bu, Ma-Bu-Bu"?</b> Pakai ini: gerhana <b>MA</b>tahari → <b>BU</b>lan di tengah; gerhana <b>BU</b>lan → <b>BU</b>mi di tengah. Kalender: <b>Masehi = Matahari (Bumi beredar)</b>, <b>Hijriah = Bulan beredar</b>. Zona waktu: bergerak ke TIMUR = jam BERTAMBAH ⏩.</p>
+    </div>
+  </div>
+  <button class="btn grad" onclick="startQuiz('bab5')">📝 Taklukkan Kuis Bab 5!</button>
+</section>
+
+<!-- ================= KUIS ================= -->
+<section id="kuis">
+  <div class="bab-head reveal"><span class="bab-num">ARENA</span><h2>🏟️ Kuis Interaktif & Try Out Provinsi</h2></div>
+  <div class="card reveal">
+    <h3>🏟️ Pilih Medan Ujianmu</h3>
+    <p>Setiap kuis 5 soal, try out 10 soal campuran (+ bocoran pengetahuan umum!). ⏱️ <b>Timer menyala: 60 detik per soal</b> — suasana ujian sesungguhnya! Skor ≥ 80? Kamu layak naik level! 🔥</p>
+    <div class="picker">
+      <button class="pick p1" onclick="startQuiz('bab1')">🫀 Kuis Bab 1<small>Ekskresi & Kesehatan</small></button>
+      <button class="pick p2" onclick="startQuiz('bab2')">🧬 Kuis Bab 2<small>Genetika & Mikroba</small></button>
+      <button class="pick p3" onclick="startQuiz('bab3')">⚡ Kuis Bab 3<small>Listrik & Magnet</small></button>
+      <button class="pick p4" onclick="startQuiz('bab4')">⚙️ Kuis Bab 4<small>Tekanan & Gerak</small></button>
+      <button class="pick p5" onclick="startQuiz('bab5')">🌍 Kuis Bab 5<small>Bumi & Antariksa</small></button>
+      <button class="pick p6" onclick="startQuiz('tryout')">🏆 TRY OUT PROVINSI<small>10 Soal Campuran HOTS</small></button>
+    </div>
+    <div id="quizArea">
+      <p style="text-align:center;color:#64748b">👆 Klik salah satu tombol di atas untuk memulai ujian. Selamat bertarung, calon juara provinsi! 🧑‍🚀</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIPS ================= -->
+<section id="tips">
+  <div class="bab-head reveal"><span class="bab-num">BONUS</span><h2>🧠 Tips Bertarung di Tingkat Provinsi</h2></div>
+  <div class="card trik reveal">
+    <h3>🏅 Strategi Emas dari Para Juara</h3>
+    <ul class="tips-list">
+      <li><b>⏱️ Manajemen waktu:</b> ±1–2 menit per soal. Mentok? Tandai, lewati, kembali lagi nanti.</li>
+      <li><b>✂️ Eliminasi pilihan:</b> buang pilihan yang jelas salah (misal: organ pencernaan bukan ekskresi), peluang benar naik drastis.</li>
+      <li><b>🔍 Baca 2 kali:</b> soal provinsi menjebak di kata "kecuali", "bukan", "selisih", "paling dalam", "terkecil".</li>
+      <li><b>🧾 Satuan dulu, angka kemudian:</b> samakan satuan sebelum menghitung (km/jam→m/s, cm→m).</li>
+      <li><b>🔁 Cek silang:</b> periksa dengan cara berbeda (misal hitung balik KM = W ÷ F vs lengan kuasa ÷ lengan beban).</li>
+      <li><b>📖 Pengetahuan umum:</b> sesuai catatan kisi-kisi, setiap jenjang ada soal pengetahuan umum — rajin membaca berita & buku!</li>
+      <li><b>😴 H-1 lomba:</b> tidur cukup & sarapan. Otak segar = senjata terkuatmu!</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Dibuat dengan ❤️ untuk calon juara Olimpiade Sains (IPA) Kelas VI tingkat Provinsi.<br>
+  <b>OMIPA VI</b> — Belajar seru hari ini, medali emas besok! 🏅
+</footer>
+
+<script>
+/* =============== BINTANG & ORB HERO =============== */
+(function(){
+  const box=document.getElementById('starsBox');
+  for(let i=0;i<70;i++){
+    const s=document.createElement('span');s.className='star';
+    const sz=(Math.random()*2.4+1).toFixed(1);
+    s.style.width=sz+'px';s.style.height=sz+'px';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';s.style.animationDuration=(2+Math.random()*3)+'s';
+    box.appendChild(s);
+  }
+  const orbs=[['🧬','6%','18%'],['⚡','88%','22%'],['🔭','10%','72%'],['🧪','84%','70%'],['🌍','48%','8%'],['🛰️','30%','85%']];
+  orbs.forEach((o,i)=>{
+    const e=document.createElement('span');e.className='orb';e.textContent=o[0];
+    e.style.left=o[1];e.style.top=o[2];e.style.animationDelay=(i*0.7)+'s';box.appendChild(e);
+  });
+})();
+
+/* =============== SCROLL REVEAL =============== */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.1});
+    els.forEach(el=>io.observe(el));
+  }else{els.forEach(el=>el.classList.add('on'));}
+})();
+
+/* =============== BANK SOAL =============== */
+const DATA = {
+ bab1:{title:"🫀 Kuis Bab 1 — Ekskresi, Saraf, Otot & Penyakit",questions:[
+  {q:"Organ yang mengekskresikan zat sisa berupa urine adalah…",options:["Hati","Paru-paru","Ginjal","Kulit"],answer:2,expl:"Ginjal menyaring darah dan membuang sisa metabolisme berupa urine (urea, air, zat sisa)."},
+  {q:"Zat sisa yang dikeluarkan kulit sebagai organ ekskresi adalah…",options:["CO₂ dan uap air","Air dan garam (keringat)","Empedu","Urine dan urea"],answer:1,expl:"Kulit mengeluarkan keringat yang berisi air dan garam mineral, sekaligus mengatur suhu tubuh."},
+  {q:"Berikut yang BUKAN merupakan proses ekskresi adalah…",options:["Buang air kecil","Berkeringat","Mengeluarkan CO₂ saat napas","Buang air besar (defekasi)"],answer:3,expl:"Defekasi membuang sisa pencernaan (bukan sisa metabolisme), jadi bukan ekskresi."},
+  {q:"Otot yang bekerja tanpa sadar dan terus-menerus memompa darah seumur hidup adalah…",options:["Otot lurik","Otot rangka","Otot jantung","Otot polos"],answer:2,expl:"Otot jantung hanya ada di jantung, bekerja otomatis tanpa pernah istirahat."},
+  {q:"Kelainan sistem ekskresi yang ditandai kadar gula berlebih dalam urine adalah…",options:["Batu ginjal","Nefritis","Diabetes melitus","Hepatitis"],answer:2,expl:"Diabetes melitus: glukosa ikut terbuang lewat urine karena gula darah terlalu tinggi."}
+ ]},
+ bab2:{title:"🧬 Kuis Bab 2 — Perkembangbiakan, Genetika & Mikrobiologi",questions:[
+  {q:"Kentang berkembang biak secara vegetatif alami menggunakan…",options:["Umbi akar","Umbi batang","Rhizoma","Umbi lapis"],answer:1,expl:"Kentang = umbi batang; singkong/wortel = umbi akar; bawang = umbi lapis; jahe = rhizoma."},
+  {q:"Contoh hewan ovovivipar (bertelur-melahirkan) adalah…",options:["Ayam dan bebek","Sapi dan kambing","Boa dan hiu","Kura-kura dan buaya"],answer:2,expl:"Boa/ular sanca dan sebagian hiu bertelur di dalam tubuh lalu melahirkan anaknya."},
+  {q:"Persilangan bunga merah (MM) × putih (mm) menghasilkan F1 bergenotipe…",options:["MM","mm","Mm","MMmm"],answer:2,expl:"Setiap induk memberi satu alel: M dari merah, m dari putih → F1 = Mm (fenotipe merah)."},
+  {q:"Jamur yang berperan dalam pembuatan tempe adalah…",options:["Saccharomyces cerevisiae","Rhizopus oligosporus","Lactobacillus bulgaricus","Acetobacter xylinum"],answer:1,expl:"Rhizopus oligosporus mengikat biji kedelai menjadi tempe. Saccharomyces = roti/tape, Lactobacillus = yogurt, Acetobacter = nata."},
+  {q:"Tanaman cocor bebek berkembang biak secara vegetatif alami dengan…",options:["Rhizoma","Geragih (stolon)","Tunas adventif (tunas daun)","Umbi lapis"],answer:2,expl:"Tunas baru tumbuh di tepi daun cocor bebek → tunas adventif."}
+ ]},
+ bab3:{title:"⚡ Kuis Bab 3 — Listrik & Magnet",questions:[
+  {q:"Rangkaian lampu yang tetap menyala walau satu lampu putus dan nyalanya paling terang adalah rangkaian…",options:["Seri","Paralel","Campuran","Hubungan singkat"],answer:1,expl:"Pada paralel tiap cabang mendapat tegangan penuh dan arus punya jalur alternatif."},
+  {q:"Diketahui V = 6 volt dan R = 3 Ω. Kuat arus (I) rangkaian adalah…",options:["0,5 A","2 A","3 A","18 A"],answer:1,expl:"Hukum Ohm: I = V ÷ R = 6 ÷ 3 = 2 ampere."},
+  {q:"Tiga baterai @1,5 V dipasang SERI. Tegangan totalnya…",options:["0,5 volt","1,5 volt","3 volt","4,5 volt"],answer:3,expl:"Baterai seri: tegangan dijumlahkan → 3 × 1,5 = 4,5 volt."},
+  {q:"Membuat magnet dengan melilitkan kawat pada besi lalu dialiri arus listrik disebut cara…",options:["Gosokan","Induksi","Elektromagnetik","Konduksi"],answer:2,expl:"Elektromagnetik menghasilkan magnet sementara; kekuatannya naik jika lilitan/arus bertambah."},
+  {q:"Dua kutub utara magnet (N–N) jika didekatkan akan…",options:["Saling tarik-menarik","Saling tolak-menolak","Menempel erat","Tidak berpengaruh"],answer:1,expl:"Kutub senama tolak-menolak; kutub tidak senama (N–S) tarik-menarik."}
+ ]},
+ bab4:{title:"⚙️ Kuis Bab 4 — Tekanan, Pesawat Sederhana & Gerak",questions:[
+  {q:"Rumus tekanan pada zat padat adalah…",options:["P = F × A","P = F ÷ A","P = A ÷ F","P = F + A"],answer:1,expl:"Tekanan = gaya ÷ luas bidang tekan. Makin kecil luas, makin besar tekanan (pisau tajam!)."},
+  {q:"Tuas dengan lengan kuasa 120 cm dan lengan beban 30 cm memiliki keuntungan mekanis…",options:["3","4","40","90"],answer:1,expl:"KM = lengan kuasa ÷ lengan beban = 120 ÷ 30 = 4."},
+  {q:"Kecepatan 72 km/jam sama dengan…",options:["7,2 m/s","20 m/s","36 m/s","200 m/s"],answer:1,expl:"72 km/jam ÷ 3,6 = 20 m/s (atau 72.000 m ÷ 3.600 s)."},
+  {q:"Menurut Archimedes, benda akan TENGGELAM jika massa jenis benda…",options:["Lebih kecil dari zat cair","Sama dengan zat cair","Lebih besar dari zat cair","Bernilai nol"],answer:2,expl:"Massa jenis benda > zat cair → tenggelam; = → melayang; < → terapung."},
+  {q:"Penyelam di laut yang makin dalam merasakan tekanan air makin besar karena tekanan hidrostatis bergantung pada…",options:["Berat badan penyelam","Kedalaman air","Warna air","Bentuk wadah"],answer:1,expl:"Ph = ρ × g × h → semakin dalam (h besar), tekanan hidrostatis semakin besar."}
+ ]},
+ bab5:{title:"🌍 Kuis Bab 5 — Bumi & Antariksa",questions:[
+  {q:"Terjadinya siang dan malam disebabkan oleh…",options:["Rotasi Bumi","Revolusi Bumi","Revolusi Bulan","Gerhana matahari"],answer:0,expl:"Bumi berputar pada porosnya (rotasi, 24 jam) sehingga bagian yang menghadap Matahari bergantian."},
+  {q:"Gerhana Bulan terjadi ketika posisi…",options:["Bulan di antara Matahari dan Bumi","Bumi di antara Matahari dan Bulan","Matahari di antara Bumi dan Bulan","Bulan di samping Bumi"],answer:1,expl:"Gerhana Bulan: ☀️–🌍–🌙, Bumi menghalangi cahaya Matahari ke Bulan (fase purnama)."},
+  {q:"Kalender Masehi (Syamsiah) disusun berdasarkan…",options:["Rotasi Bumi pada porosnya","Revolusi Bumi mengelilingi Matahari","Revolusi Bulan mengelilingi Bumi","Rotasi Bulan"],answer:1,expl:"Masehi = peredaran Bumi–Matahari (365/366 hari); Hijriah = peredaran Bulan–Bumi (354/355 hari)."},
+  {q:"Gerhana matahari CINCIN terjadi apabila Bulan berada di…",options:["Titik terdekat dengan Bumi (perigee)","Titik terjauh dari Bumi (apogee)","Tengah-tengah orbit","Belakang Matahari"],answer:1,expl:"Saat apogee piringan Bulan tampak lebih kecil sehingga Matahari terlihat seperti cincin cahaya."},
+  {q:"Jika WIB menunjukkan pukul 15.00, maka waktu di wilayah WITA adalah…",options:["14.00","15.00","16.00","17.00"],answer:2,expl:"WITA = WIB + 1 jam (UTC+8 vs UTC+7) → 16.00."}
+ ]},
+ tryout:{title:"🏆 TRY OUT PROVINSI — 10 Soal Campuran + Pengetahuan Umum",questions:[
+  {q:"Sebagai organ ekskresi, hati berfungsi…",options:["Membentuk urine","Membentuk empedu & menetralisir racun","Mengeluarkan CO₂ dan uap air","Menghasilkan keringat"],answer:1,expl:"Hati mengekskresikan empedu, membentuk urea, dan menetralisir racun."},
+  {q:"Persilangan Mm × Mm menghasilkan rasio fenotipe F2 (dominan : resesif)…",options:["1 : 1","3 : 1","9 : 1","Semua dominan"],answer:1,expl:"Punnett: MM, Mm, Mm, mm → dominan (3) : resesif (1) = 3 : 1."},
+  {q:"Bakteri yang digunakan dalam pembuatan yogurt adalah…",options:["Rhizopus oligosporus","Lactobacillus bulgaricus","Acetobacter xylinum","Saccharomyces cerevisiae"],answer:1,expl:"Lactobacillus mengubah laktosa susu menjadi asam laktat → yogurt/keju."},
+  {q:"Dua baterai @1,5 V dirangkai seri dengan hambatan 6 Ω. Kuat arusnya…",options:["0,5 A","2 A","3 A","9 A"],answer:0,expl:"V = 3 volt; I = V ÷ R = 3 ÷ 6 = 0,5 ampere."},
+  {q:"Mobil menempuh 90 km dalam 1,5 jam. Kecepatan mobil tersebut…",options:["45 km/jam","60 km/jam","75 km/jam","135 km/jam"],answer:1,expl:"v = s ÷ t = 90 ÷ 1,5 = 60 km/jam."},
+  {q:"Keuntungan mekanis katrol BEBAS (katrol bergerak) adalah…",options:["1","2","3","4"],answer:1,expl:"Katrol bebas KM = 2; katrol tetap KM = 1; sistem katrol = jumlah tali penahan beban."},
+  {q:"Berikut yang merupakan akibat REVOLUSI Bumi adalah…",options:["Siang dan malam","Perbedaan waktu antar wilayah","Pergantian musim di daerah subtropis","Gerak semu harian Matahari"],answer:2,expl:"Revolusi (365,25 hari) → musim, gerak semu tahunan, dasar kalender Masehi. Sisanya akibat rotasi."},
+  {q:"Waktu dari bulan baru ke bulan baru berikutnya (periode sinodis) adalah…",options:["24 jam","27,3 hari","29,5 hari","365 hari"],answer:2,expl:"Sinodis = 29,5 hari (dasar bulan Hijriah); sideris = 27,3 hari."},
+  {q:"Gerhana matahari hanya mungkin terjadi saat fase bulan…",options:["Purnama","Baru","Sabit","Separuh"],answer:1,expl:"Gerhana Matahari: Bulan di tengah (☀️–🌙–) = posisi bulan baru."},
+  {q:"[PENGETAHUAN UMUM] Tokoh nasional Indonesia yang dijuluki Bapak Pendidikan Nasional adalah…",options:["R.A. Kartini","Ki Hajar Dewantara","Pangeran Diponegoro","Drs. Moh. Hatta"],answer:1,expl:"Ki Hajar Dewantara pendiri Taman Siswa; tanggal lahirnya (2 Mei) diperingati sebagai Hari Pendidikan Nasional. Sesuai catatan kisi-kisi: ada soal pengetahuan umum!"}
+ ]}
+};
+
+/* =============== MESIN KUIS + TIMER =============== */
+let state = {quiz:null, idx:0, benar:0, answered:false, log:[], streak:0, deadline:0, timerInt:null};
+const area = () => document.getElementById('quizArea');
+const DETIK_PER_SOAL = 60;
+
+function fmt(ms){
+  const t=Math.max(0,Math.ceil(ms/1000));
+  return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+}
+function tick(){
+  const el=document.getElementById('timer');
+  const sisa=state.deadline-Date.now();
+  if(el) el.textContent='⏱ '+fmt(sisa);
+  if(sisa<=0){
+    clearInterval(state.timerInt);
+    const qs=DATA[state.quiz].questions;
+    for(let j=state.idx;j<qs.length;j++) state.log.push({q:qs[j].q,ok:false,skip:true});
+    state.idx=qs.length; state.streak=0;
+    hasil(true);
+  }
+}
+function startQuiz(id){
+  clearInterval(state.timerInt);
+  const total=DATA[id].questions.length;
+  state={quiz:id,idx:0,benar:0,answered:false,log:[],streak:0,
+         deadline:Date.now()+total*DETIK_PER_SOAL*1000,timerInt:null};
+  render();
+  state.timerInt=setInterval(tick,500); tick();
+  document.getElementById('kuis').scrollIntoView({behavior:'smooth'});
+}
+function render(){
+  const quiz=DATA[state.quiz], total=quiz.questions.length, q=quiz.questions[state.idx];
+  state.answered=false;
+  area().innerHTML = `
+    <div class="quiz-top">
+      <span>${quiz.title}</span>
+      <span>Soal ${state.idx+1}/${total} • ✅ ${state.benar} ${state.streak>=3?'• 🔥×'+state.streak:''} • <span class="timer" id="timer">⏱ --:--</span></span>
+    </div>
+    <div class="pbar"><div class="pfill" style="width:${(state.idx/total)*100}%"></div></div>
+    <h3 class="qtext">${q.q}</h3>
+    <div>${q.options.map((o,i)=>`<button class="opt" data-i="${i}" onclick="pilih(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div>
+    <div id="expl"></div><div id="navBtn"></div>`;
+  tick();
+}
+function pilih(i){
+  if(state.answered) return;
+  state.answered=true;
+  const q=DATA[state.quiz].questions[state.idx];
+  const ok=(i===q.answer);
+  if(ok){state.benar++;state.streak++;} else state.streak=0;
+  state.log.push({q:q.q,ok});
+  document.querySelectorAll('.opt').forEach(b=>{
+    const bi=+b.dataset.i;
+    if(bi===q.answer) b.classList.add('correct');
+    else if(bi===i) b.classList.add('wrong');
+    b.disabled=true;
+  });
+  document.getElementById('expl').innerHTML=
+    `<div class="expl ${ok?'good':'bad'}"><b>${ok?'✅ Benar! Hebat!':'❌ Belum tepat.'}</b> ${q.expl}</div>`;
+  const total=DATA[state.quiz].questions.length;
+  document.getElementById('navBtn').innerHTML=
+    `<button class="btn grad" onclick="lanjut()">${state.idx+1<total?'Soal Berikutnya →':'Lihat Hasil 🏁'}</button>`;
+}
+function lanjut(){
+  state.idx++;
+  if(state.idx<DATA[state.quiz].questions.length) render();
+  else hasil(false);
+}
+function hasil(timeout){
+  clearInterval(state.timerInt);
+  const total=DATA[state.quiz].questions.length;
+  const skor=Math.round(state.benar/total*100);
+  let pesan,emoji;
+  if(skor>=90){pesan="LUAR BIASA! Kamu siap mengguncang tingkat provinsi!";emoji="🏆";}
+  else if(skor>=70){pesan="Hebat! Sedikit lagi menuju juara. Gaspol!";emoji="🌟";}
+  else if(skor>=50){pesan="Lumayan! Pelajari lagi pembahasan soal yang salah ya.";emoji="💪";}
+  else {pesan="Jangan menyerah! Baca ulang materinya, lalu coba lagi. Kamu pasti bisa!";emoji="📚";}
+  area().innerHTML=`
+    <div class="hasil">
+      <div style="font-size:3.4rem">${timeout?'⏰':emoji}</div>
+      <div class="skor">${skor}</div>
+      <p><b>${state.benar} benar dari ${total} soal</b>${timeout?'<br><i>Waktu habis! Sisa soal dihitung belum terjawab.</i>':''}<br>${timeout&&skor<90?emoji+' ':''}${pesan}</p>
+      <ul class="review">${state.log.map(l=>`<li>${l.skip?'⏰':l.ok?'✅':'❌'} ${l.q}</li>`).join('')}</ul>
+      <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn grad" onclick="startQuiz('${state.quiz}')">🔁 Ulangi</button>
+        <button class="btn" onclick="location.href='#kuis'">🏟️ Pilih Kuis Lain</button>
+      </div>
+    </div>`;
+  if(skor>=90) konfeti();
+}
+function konfeti(){
+  const em=['🎉','🏅','⭐','🎊','','🧬','⚡','🌍'];
+  for(let i=0;i<40;i++){
+    const s=document.createElement('span');
+    s.className='confetti';
+    s.textContent=em[Math.floor(Math.random()*em.length)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(2+Math.random()*2.5)+'s';
+    s.style.animationDelay=(Math.random()*0.8)+'s';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),5200);
+  }
+}
+</script>
+</body>
+</html>
